@@ -154,22 +154,24 @@ footer {
                     }
                 }
             }
+        }
 
-            .right {
-                gap: 32px;
-                color: #fff;
-                align-items: center;
-                flex-direction: column;
-                @media(min-width: 800px){
-                    align-items: flex-end;
-                    gap: 0;
-                }
+        .right 
+        {
+            gap: 32px;
+            color: #fff;
+            align-items: center;
+            flex-direction: column;
+            @media(min-width: 800px){
+                align-items: flex-end;
+                gap: 0;
             }
-
+            
             p {
                 margin-top: auto;
             }
         }
+
     }
 }
 </style>
