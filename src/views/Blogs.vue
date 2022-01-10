@@ -22,7 +22,19 @@ import BlogCard from "../components/BlogCard.vue"
         computed: {
             sampleBlogCards () {
                 return this.$store.state.sampleBlogCards
+            },
+            editPost: {
+                get() {
+                    return this.$store.state.editPost
+                },
+                set(payload) {
+                    return this.$store.commit("toggleEditPost", payload)
+                }
+
             }
+        },
+        beforeDestroy() {
+            this.$store.commit("toggleEditPost", false);
         }
     }
 </script>

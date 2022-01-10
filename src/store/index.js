@@ -26,9 +26,14 @@ export default new Vuex.Store({
         blogCoverPhoto: "stock-4",
         blogDate: "May 31, 2021"
       }
-    ]
+    ],
+    editPost: null
   },
-  mutations: {},
+  mutations: {
+    toggleEditPost(state, payload) {
+      state.editPost = payload;
+    }
+  },
   actions: {},
   modules: {}
 });
