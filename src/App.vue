@@ -123,7 +123,7 @@ button,
   background-color: rgba(128, 128, 128, 0.5) !important;
 }
 
-.blog-card-wrap{
+.blog-card-wrap {
   position: relative;
   padding: 80px 16px;
   background-color: #f1f1f1;
