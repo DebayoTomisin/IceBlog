@@ -68,8 +68,8 @@ export default {
 
             &:hover {
                 background-color: #303030;
-
-                .edit,.delete {
+                .edit
+                .delete {
                     fill: #fff
                 }
             }
@@ -105,6 +105,38 @@ export default {
         z-index: 3;
         padding: 32px 16px;
         color: #000;
+
+        h4 {
+            padding-bottom: 8px;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        h6 {
+            font-weight: 400;
+            font-size: 12px;
+            padding-bottom: 16px;
+        }
+
+        .link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: auto;
+            font-weight: 500;
+            padding-top: 20px;
+            font-size: 12px;
+            padding-bottom: 4px;
+            transition: .5s ease all;
+
+            &:hover {
+                color: rgba(48, 48, 48, 0.8);
+            }
+
+            .arrow{
+                width: 10px;
+            }
+        }
     }
+
 }
 </style>
