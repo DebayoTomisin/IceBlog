@@ -1,13 +1,54 @@
 <template>
-    <div>
+    <div class="form-wrap">
+        <form class="register">
+            <p class="login-register">
+                Already have an account?
+                <router-link class="router-link" :to="{name: 'Login'}">Login</router-link>
+            </p>
+            <h2>Create Your IceBlog Account</h2>
+            <div class="inputs">
+                <div class="input">
+                    <input type="text" placeholder="First Name" v-model="firstName"/>
+                    <user class="icon" />
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Last Name" v-model="lastname"/>
+                    <user class="icon" />
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Username" v-model="username"/>
+                    <user class="icon" />
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Email" v-model="email"/>
+                    <email class="icon" />
+                </div>
 
+                <div class="input">
+                    <input type="password" placeholder="Password" v-model="password" />
+                    <password class="icon" />
+                </div>
+            </div>
+
+            <button>sign up</button>
+            <div class="angle"></div>
+        </form>
+        <div class="background"></div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'Register'   
+import email from "../assets/Icons/envelope-regular.svg"
+import password from "../assets/Icons/lock-alt-solid.svg"
+import user from "../assets/Icons/user-alt-light.svg"
+export default {
+    name: 'Register',
+    components: {
+        email,
+        password,
+        user,
     }
+}
 </script>
 
 <style lang="scss" scoped>
