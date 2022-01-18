@@ -12,11 +12,11 @@
                     <user class="icon" />
                 </div>
                 <div class="input">
-                    <input type="text" placeholder="Last Name" v-model="lastname"/>
+                    <input type="text" placeholder="Last Name" v-model="lastName"/>
                     <user class="icon" />
                 </div>
                 <div class="input">
-                    <input type="text" placeholder="Username" v-model="username"/>
+                    <input type="text" placeholder="Username" v-model="userName"/>
                     <user class="icon" />
                 </div>
                 <div class="input">
@@ -28,9 +28,10 @@
                     <input type="password" placeholder="Password" v-model="password" />
                     <password class="icon" />
                 </div>
+                <div v-show="error" class="error">{{this.errorMessage}}</div>
             </div>
 
-            <button>sign up</button>
+            <button @click.prevent="register">sign up</button>
             <div class="angle"></div>
         </form>
         <div class="background"></div>
@@ -41,6 +42,10 @@
 import email from "../assets/Icons/envelope-regular.svg"
 import password from "../assets/Icons/lock-alt-solid.svg"
 import user from "../assets/Icons/user-alt-light.svg"
+import firebase from "firebase/app"
+import "firebase/auth"
+import db from "../firebase/firebaseInit"
+import Vue from 'vue'
 export default {
     name: 'Register',
     components: {
@@ -50,11 +55,42 @@ export default {
     },
     data () {
         return {
-            firstName: null,
-            lastName: null,
-            UserName: null,
-            Email: null,
-            Password: null
+            firstName:"",
+            lastName:"",
+            userName:"",
+            email:"",
+            password:"",
+            error: null,
+            errorMessage: '',
+        }
+    },
+    methods: {
+        async register() {
+            if (
+                this.email !== "" &&
+                this.password !== "" &&
+                this.firstName !== "" &&
+                this.lastName !== "" &&
+                this.userName !== ""
+            ) {
+                this.error= false
+                this.errorMessage = ""
+                const firebaseAuth = await firebase.auth()
+                const createUser = await firebaseAuth.createUserWithEmailAndPassword(this.email, this.password)
+                const result = await createUser
+                const database = db.collection("users").doc(result.user.uid)
+                await database.set({
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    userName: this.userName,
+                    email: this.email,
+                })
+                this.$router.push({ name: 'Home'})
+                return;
+            }
+            this.error = true;
+            this.errorMessage = "Please fill out all fields"
+            return;
         }
     }
 }
