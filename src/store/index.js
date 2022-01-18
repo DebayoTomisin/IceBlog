@@ -1,5 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import firebase from "firebase/app";
+import "firebase/auth";
+import db from "../firebase/firebaseInit";
 
 Vue.use(Vuex);
 
@@ -27,13 +30,44 @@ export default new Vuex.Store({
         blogDate: "May 31, 2021"
       }
     ],
-    editPost: null
+    editPost: null,
+    user: null,
+    profileEmail: null,
+    profileFirstName: null,
+    profileLastName: null,
+    profileUserName: null,
+    profileId: null,
+    profileInitials: null
   },
   mutations: {
     toggleEditPost(state, payload) {
       state.editPost = payload;
+    },
+    updateUser(state, payload) {
+      state.user = payload;
+    },
+    setProfileInfo(state, payload) {
+      state.profileId = payload.id;
+      state.profileEmail = payload.data.email;
+      state.profileFirstName = payload.data.firstName;
+      state.profileLastName = payload.data.lastName;
+      state.profileUserName = payload.data.username;
+    },
+    setProfileInitials(state) {
+      state.setProfileInitials =
+        state.profileFirstName.match(/(\b\S)?/g).join("") +
+        state.profileLastName.match(/(\b\S)?/g).join("");
     }
   },
-  actions: {},
+  actions: {
+    async getCurrentUser({ commit }) {
+      const database = await db
+        .collection("users")
+        .doc(firebase.auth().currentUser.uid);
+      const dbresults = await database.get();
+      commit("setProfileInfo", dbresults);
+      commit("setProfileInit");
+    }
+  },
   modules: {}
 });
