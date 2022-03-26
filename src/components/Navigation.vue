@@ -11,6 +11,14 @@
                     <router-link class="link" to="#">Create Post</router-link>
                     <router-link class="link" :to="{name: 'Login'}">Login/Register</router-link>
                 </ul>
+                <div class="profile" ref="profile">
+                    <span>{{ this.$store.state.profileInitials }}</span>
+                    <div class="profile-menu">
+                        <div class="info">
+                            <p class='initials'>{{ this.$store.state.profileInitials }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
         <menuIcon @click="toggleMobileNav" class="menu-icon" v-show="mobile" />

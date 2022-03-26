@@ -31,7 +31,7 @@ import Loading from "../components/Loading.vue"
 import firebase from "firebase/app"
 import "firebase/auth"
 export default {
-    name: 'Forgot Password',
+    name: 'ForgotPassword',
     components: {
         email,
         Modal,
