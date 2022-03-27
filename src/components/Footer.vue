@@ -43,6 +43,11 @@ import instagram from '../assets/Icons/instagram-brands.svg'
 import linkedin from '../assets/Icons/linkedin-brands.svg'
 export default {
     name: 'Footer',
+    data() {
+        return{
+            user: true
+        }
+    },
     components: {
         youtube,
         twitter,
