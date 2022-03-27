@@ -2,7 +2,9 @@ import Vue from "vue";
 import Vuex from "vuex";
 import firebase from "firebase/app";
 import "firebase/auth";
-import db from "../firebase/firebaseInit";
+import firebaseApp from "../firebase/firebaseInit";
+
+const db = firebaseApp.firestore();
 
 Vue.use(Vuex);
 
@@ -66,7 +68,7 @@ export default new Vuex.Store({
         .doc(firebase.auth().currentUser.uid);
       const dbresults = await database.get();
       commit("setProfileInfo", dbresults);
-      commit("setProfileInit");
+      //commit("setProfileInitials");
     }
   },
   modules: {}

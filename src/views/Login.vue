@@ -49,10 +49,10 @@ export default {
     methods: {
         signin () {
             firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() =>{
-                this.$router.push('/')
                 this.error = false
                 this.errorMessage = ""
                 console.log(firebase.auth().currentUser.uid)
+                this.$router.push('/')
             }).catch((err) => {
                 this.error = true
                 this.errorMessage = err.message
