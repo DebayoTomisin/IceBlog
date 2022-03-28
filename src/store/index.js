@@ -50,13 +50,13 @@ export default new Vuex.Store({
     },
     setProfileInfo(state, payload) {
       state.profileId = payload.id;
-      state.profileEmail = payload.data.email;
-      state.profileFirstName = payload.data.firstName;
-      state.profileLastName = payload.data.lastName;
-      state.profileUserName = payload.data.username;
+      state.profileEmail = payload.data().email;
+      state.profileFirstName = payload.data().firstName;
+      state.profileLastName = payload.data().lastName;
+      state.profileUserName = payload.data().username;
     },
     setProfileInitials(state) {
-      state.setProfileInitials =
+      state.profileInitials =
         state.profileFirstName.match(/(\b\S)?/g).join("") +
         state.profileLastName.match(/(\b\S)?/g).join("");
     }
@@ -68,7 +68,7 @@ export default new Vuex.Store({
         .doc(firebase.auth().currentUser.uid);
       const dbresults = await database.get();
       commit("setProfileInfo", dbresults);
-      //commit("setProfileInitials");
+      commit("setProfileInitials");
     }
   },
   modules: {}
