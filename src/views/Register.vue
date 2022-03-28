@@ -87,7 +87,6 @@ export default {
                         userName: this.userName,
                         email: this.email,
                     })
-                    console.log(database)
                     this.$router.push({ name: 'Home' })
                     return;
                 } catch(error) {
