@@ -27,6 +27,9 @@ export default {
       this.$store.commit("updateUser", user);
       if (user) {
         this.$store.dispatch("getCurrentUser")
+        if (user.email == 'adebayotosin101@gmail.com'){
+          this.$store.dispatch('setAdmin')
+        }
       }
     })
   },

@@ -5,7 +5,7 @@
             <h2>Account Settings </h2>
             <div class="profile-info">
                 <div class="initials">{{ this.$store.state.profileInitials }}</div>
-                <div class="admin-badge">
+                <div v-show="isAdmin" class="admin-badge">
                     <adminIcon class="icon" />
                     <span>admin</span>
                 </div>
@@ -40,7 +40,8 @@ import adminIcon from '../assets/Icons/user-crown-light.svg'
         data () {
             return {
                 modalMessage: 'Changes were saved',
-                modalActive: null
+                modalActive: null,
+                isAdmin: this.$store.state.isAdmin
             }
         },
         methods: {

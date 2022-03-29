@@ -1,6 +1,11 @@
 <template>
-    <div>
-        Admin Page
+    <div class="admin">
+        <div class="container">
+            <h2 class="">Administration</h2>
+            <div class="admin-info">
+                
+            </div>
+        </div>
     </div>
 </template>
 
